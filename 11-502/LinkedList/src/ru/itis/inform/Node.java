@@ -1,11 +1,12 @@
 package ru.itis.inform;
 
-public class Node {
+public class Node<T> {
 
-    private int value;
-    private Node next;
+    private T value;
+    private Node<T> next;
+    private Node<T> previous;
 
-    public Node(int value) {
+    public Node(T value) {
         this.value = value;
         this.next = null;
     }
@@ -14,11 +15,19 @@ public class Node {
         this.next  = next;
     }
 
-    public int getValue() {
+    public T getValue() {
         return value;
     }
 
-    public Node getNext() {
+    public Node<T> getNext() {
         return next;
+    }
+
+    public Node<T> getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(Node previous) {
+        this.previous = previous;
     }
 }

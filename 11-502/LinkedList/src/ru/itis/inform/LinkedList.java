@@ -1,7 +1,7 @@
 package ru.itis.inform;
 
-public class LinkedList implements List {
-    private Node first;
+public class LinkedList<T> implements List<T> {
+    private Node<T> first;
 
     private int count;
 
@@ -10,19 +10,27 @@ public class LinkedList implements List {
         this.count = 0;
     }
 
-    public void add(int element) {
-        Node newNode = new Node(element);
-
+    // Когда добавляете, учтите, что еще есть previous
+    public void add(T element) {
+        Node newNode = new Node<T>(element);
+        newNode.setPrevious(null);
         if (first == null) {
             this.first = newNode;
         } else {
             newNode.setNext(this.first);
+            first.setPrevious(newNode);
             first = newNode;
         }
+        this.count++;
     }
 
     @Override
-    public void remove(int element) {
+    public void remove(T element) {
 
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new LinkedListIteratorImpl<T>(this.first);
     }
 }
