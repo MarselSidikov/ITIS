@@ -1,3 +1,5 @@
+package ru.itis.inform;
+
 import java.lang.reflect.Array;
 
 public class ArrayList<T> {
